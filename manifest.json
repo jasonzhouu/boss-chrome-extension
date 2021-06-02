@@ -3,6 +3,11 @@
   "name": "Boss-Robot",
   "description": "Boss直聘批量邀请工具",
   "version": "0.0.1",
+  "icons": {
+    "16": "boss.png",
+    "48": "boss.png",
+    "128": "boss.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.zhipin.com/web/boss/recommend"],
