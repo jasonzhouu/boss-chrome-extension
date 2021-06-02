@@ -1,12 +1,17 @@
 {
-  "manifest_version": 2,
-  "name": "Boss-Robot",
+  "manifest_version": 3,
+  "name": "Boss直聘 Robot",
   "description": "Boss直聘批量邀请工具",
   "version": "0.0.1",
   "icons": {
     "16": "boss.png",
     "48": "boss.png",
     "128": "boss.png"
+  },
+  "permissions": ["tabs"],
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
