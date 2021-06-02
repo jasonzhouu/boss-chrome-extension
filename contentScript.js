@@ -9,13 +9,13 @@ const wait = async () => {
       ".recommend-card-list"
     );
     if (cardListElement === null) {
-      await timeout(1000);
+      await timeout(3000);
       return await wait();
     } else {
       return [cardListElement, iframe2.contentWindow];
     }
   } catch (error) {
-    await timeout(1000);
+    await timeout(3000);
     return await wait();
   }
 };
@@ -29,13 +29,13 @@ const wait = async () => {
     );
     if (button) {
       button.click();
-      await timeout(1000);
+      await timeout(3000);
       if (document.querySelector(".business-block-wrap")) {
         break;
       }
     } else {
       iframeWindow.scrollTo(0, cardListEle.scrollHeight);
-      await timeout(1000);
+      await timeout(3000);
     }
   }
 })();
