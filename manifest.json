@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Boss-Robot",
+  "description": "Boss直聘批量邀请工具",
+  "version": "0.0.1",
+  "content_scripts": [
+    {
+      "matches": ["https://www.zhipin.com/web/boss/recommend"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}
