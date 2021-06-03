@@ -90,7 +90,8 @@ const start = async (cardListEle, iframeWindow, extensionButton, countInfo) => {
     }
     
     #boss-chrome-extension p {
-      font-size: 5rem;
+      font-size: 4rem;
+      line-height: 4rem;
     }  
   `;
   document.body.appendChild(style);
