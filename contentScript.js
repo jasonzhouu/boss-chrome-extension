@@ -27,10 +27,12 @@ const filterButton = (cardListEle) => {
   const card = Array.from(cardListEle.querySelectorAll("li")).find((card) => {
     const button = card.querySelector("button.btn-greet");
     const sexIcon = card.querySelector("div.avatar-box i");
+    const desceription = card.querySelector("div.advantage-new");
     return (
       button &&
       button.innerText === "打招呼" &&
-      !sexIcon.className.endsWith("women")
+      !sexIcon.className.endsWith("women") &&
+      desceription.toLowerCase().includes("react")
     );
   });
   if (card) {
