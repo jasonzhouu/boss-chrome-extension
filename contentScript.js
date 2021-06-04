@@ -23,15 +23,27 @@ const wait = async () => {
   }
 };
 
+const filterButton = (cardListEle) => {
+  const card = Array.from(cardListEle.querySelectorAll("li")).find((card) => {
+    const button = card.querySelector("button.btn-greet");
+    const sexIcon = card.querySelector("div.avatar-box i");
+    return (
+      button &&
+      button.innerText === "打招呼" &&
+      !sexIcon.className.endsWith("women")
+    );
+  });
+  if (card) {
+    return card.querySelector("button.btn-greet");
+  }
+};
+
 const start = async (cardListEle, iframeWindow, extensionButton, countInfo) => {
   while (true) {
     // 如果用户点击了暂停，则终止循环
     if (!!extensionButton && extensionButton.innerText === "开始") break;
 
-    let buttons = iframeWindow.document.querySelectorAll("button.btn-greet");
-    const button = Array.from(buttons).find(
-      (item) => item.innerText === "打招呼"
-    );
+    const button = filterButton(cardListEle);
     if (button) {
       button.click();
       count += 1;
