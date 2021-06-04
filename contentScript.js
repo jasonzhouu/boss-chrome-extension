@@ -38,7 +38,9 @@ const start = async (cardListEle, iframeWindow, extensionButton, countInfo) => {
       countInfo.innerText = count;
       await timeout();
       if (iframeWindow.document.querySelector(".dialog-chat-greeting")) {
-        // @TODO 关闭确认弹窗
+        iframeWindow.document
+          .querySelector(".dialog-chat-greeting button.btn")
+          .click();
       }
       // 达到邀请上限，则终止循环
       if (document.querySelector(".business-block-wrap")) {
