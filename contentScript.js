@@ -23,22 +23,38 @@ const wait = async () => {
   }
 };
 
+const filterButton = (cardListEle) => {
+  const card = Array.from(cardListEle.querySelectorAll("li")).find((card) => {
+    const button = card.querySelector("button.btn-greet");
+    const sexIcon = card.querySelector("div.avatar-box i");
+    const description = card.querySelector("div.advantage-new");
+    return (
+      button &&
+      button.innerText === "打招呼" &&
+      !sexIcon.className.endsWith("women") &&
+      description.innerText.toLowerCase().includes("react")
+    );
+  });
+  if (card) {
+    return card.querySelector("button.btn-greet");
+  }
+};
+
 const start = async (cardListEle, iframeWindow, extensionButton, countInfo) => {
   while (true) {
     // 如果用户点击了暂停，则终止循环
     if (!!extensionButton && extensionButton.innerText === "开始") break;
 
-    let buttons = iframeWindow.document.querySelectorAll("button.btn-greet");
-    const button = Array.from(buttons).find(
-      (item) => item.innerText === "打招呼"
-    );
+    const button = filterButton(cardListEle);
     if (button) {
       button.click();
       count += 1;
       countInfo.innerText = count;
       await timeout();
       if (iframeWindow.document.querySelector(".dialog-chat-greeting")) {
-        // @TODO 关闭确认弹窗
+        iframeWindow.document
+          .querySelector(".dialog-chat-greeting button.btn")
+          .click();
       }
       // 达到邀请上限，则终止循环
       if (document.querySelector(".business-block-wrap")) {
@@ -90,7 +106,8 @@ const start = async (cardListEle, iframeWindow, extensionButton, countInfo) => {
     }
     
     #boss-chrome-extension p {
-      font-size: 5rem;
+      font-size: 4rem;
+      line-height: 4rem;
     }  
   `;
   document.body.appendChild(style);
